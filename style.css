@@ -1,0 +1,708 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body {
+  color: aliceblue;
+  background-color: black;
+  padding: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 10%;
+  background: transparent;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 30px;
+  color: darkgray;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  font-size: 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 35px;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  color: rgba(14, 255, 255, 0.784);
+}
+
+/* Menu burger pour mobile */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  width: 35px;
+  height: 30px;
+  position: relative;
+  z-index: 200;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: white; /* Couleur visible des barres */
+  margin: 6px 0;
+  transition: 0.4s ease; /* Transition douce */
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    width: 35px;
+    height: 30px;
+    position: relative;
+    z-index: 200;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg);
+    position: absolute;
+    top: 10px;
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0; /* Cache la barre du milieu */
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 10px;
+  }
+
+  .navbar {
+    display: none; /* Masquer la navbar par défaut sur mobile */
+    flex-direction: column;
+    width: 100%;
+    background-color: black;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    z-index: 150;
+    
+  }
+
+  .navbar.active {
+    display: flex; /* Afficher la navbar lorsque le toggle est activé */
+  }
+  .navbar.active + .home {
+    margin-top: 80px; /* Déplacer la section home sous la navbar */
+  }
+}
+
+
+
+.home {
+  position: relative;
+  width: 100%;
+  justify-content: space-between;
+  height: 100vh;
+  background-color: black; /* Fond noir */
+  display: flex;
+  align-items: center;
+  padding: 70px 10%; /* Padding normal */
+  transition: margin-top 0.4s ease; /* Transition pour le mouvement */
+}
+
+img {
+  max-width: 90%;
+  border-radius: 50%;
+  background-color: black;
+}
+
+.home .home-content {
+  max-width: 600px;
+}
+
+.conatct {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0;
+}
+
+.conatct a {
+  font-size: 24px;
+  margin: 0 10px;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+  padding: 8px;
+  width: 50px; /* Largeur fixe pour que l'icône soit parfaitement arrondie */
+  height: 50px; /* Hauteur fixe pour que l'icône soit parfaitement arrondie */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Cela rend les icônes parfaitement arrondies */
+  box-shadow: 0 0 10px rgb(0, 219, 235);
+  background-color: black;
+  color: rgb(0, 219, 235);
+}
+
+.conatct a:hover {
+  color: #24e6f1;
+  transform: translateY(-5px);
+}
+
+/* Media queries pour les petits écrans (max-width: 768px) */
+@media (max-width: 768px) {
+  .home {
+    flex-direction: column; /* Disposer en colonne sur mobile */
+    text-align: center;
+    padding: 50px 5%;
+  }
+
+  .home .home-content {
+    max-width: 100%;
+  }
+
+  img {
+    max-width: 80%;
+    margin-top: 20px;
+  }
+
+  .conatct {
+    justify-content: center;
+    padding: 20px 0;
+  }
+
+  .navbar a {
+    font-size: 20px;
+    margin-left: 15px;
+  }
+}
+
+/* Media queries pour les très petits écrans (max-width: 480px) */
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 5%;
+  }
+
+  .navbar a {
+    font-size: 18px;
+    margin-left: 10px;
+    
+  }
+
+  .home {
+    padding: 40px 5%;
+  }
+
+  img {
+    max-width: 70%;
+  }
+
+  .conatct a {
+    font-size: 20px;
+    margin: 0 8px;
+  }
+  /* Transition douce pour le déplacement de .home-content */
+.home-content {
+  transition: margin-top 0.4s ease;
+}
+
+/* Ajustement de la marge lorsque la navbar est active */
+.navbar.active + .home .home-content {
+  margin-top: 250px; /* Ajuste la marge en fonction de la hauteur de ta navbar */
+}
+}
+/*About ection*/
+
+.about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 10%;
+  background-color: black;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 219, 235, 0.1), rgba(0, 219, 235, 0.05));
+  z-index: -1;
+  animation: gradientAnimation 10s infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.about-content {
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.about-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.about-content h2 span {
+  color: rgb(0, 219, 235);
+}
+
+.about-content h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease-out 0.5s;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 30px;
+  animation: fadeInUp 1s ease-out 1s;
+}
+
+.btn-box {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(0, 219, 235);
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: fadeInUp 1s ease-out 1.5s;
+}
+
+.btn:hover {
+  background-color: #24e6f1;
+  transform: translateY(-5px);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  .about {
+    padding: 50px 5%;
+  }
+
+  .about-content h2 {
+    font-size: 30px;
+  }
+
+  .about-content h3 {
+    font-size: 20px;
+  }
+
+  .about-content p {
+    font-size: 16px;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 40px 5%;
+  }
+
+  .about-content h2 {
+    font-size: 26px;
+  }
+
+  .about-content h3 {
+    font-size: 18px;
+  }
+
+  .about-content p {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
+.skills {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 10%;
+  background-color: black;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.skills::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 219, 235, 0.1), rgba(0, 219, 235, 0.05));
+  z-index: -1;
+  animation: gradientAnimation 10s infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.skills-content {
+  max-width: 1200px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.skills-content h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.skills-content h2 span {
+  color: rgb(0, 219, 235);
+}
+
+.skills-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.category h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: rgb(0, 219, 235);
+}
+
+.skill-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  animation: fadeInUp 1s ease-out 0.5s;
+}
+
+.skill-box:hover {
+  transform: translateY(-10px);
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.skill-box i {
+  font-size: 48px;
+  margin-bottom: 10px;
+  color: rgb(0, 219, 235);
+}
+
+.skill-box span {
+  font-size: 18px;
+  color: white;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  .skills {
+    padding: 50px 5%;
+  }
+
+  .skills-content h2 {
+    font-size: 30px;
+  }
+
+  .skill-box {
+    width: 120px;
+    height: 120px;
+  }
+
+  .skill-box i {
+    font-size: 36px;
+  }
+
+  .skill-box span {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills {
+    padding: 40px 5%;
+  }
+
+  .skills-content h2 {
+    font-size: 26px;
+  }
+
+  .skill-box {
+    width: 100px;
+    height: 100px;
+  }
+
+  .skill-box i {
+    font-size: 24px;
+  }
+
+  .skill-box span {
+    font-size: 14px;
+  }
+}
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 10%;
+  background-color: black;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(0, 219, 235, 0.1), rgba(0, 219, 235, 0.05));
+  z-index: -1;
+  animation: gradientAnimation 10s infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.contact-content {
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.contact-content h2 span {
+  color: rgb(0, 219, 235);
+}
+
+.contact-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-box {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.input-box input {
+  width: 48%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.input-box input:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgb(0, 219, 235);
+  outline: none;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  resize: none;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+textarea:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgb(0, 219, 235);
+  outline: none;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: rgb(0, 219, 235);
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: fadeInUp 1s ease-out 1.5s;
+}
+
+.btn:hover {
+  background-color: #24e6f1;
+  transform: translateY(-5px);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+  .contact {
+    padding: 50px 5%;
+  }
+
+  .contact-content h2 {
+    font-size: 30px;
+  }
+
+  .input-box {
+    flex-direction: column;
+  }
+
+  .input-box input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 40px 5%;
+  }
+
+  .contact-content h2 {
+    font-size: 26px;
+  }
+
+  .input-box input {
+    font-size: 14px;
+  }
+
+  textarea {
+    font-size: 14px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
